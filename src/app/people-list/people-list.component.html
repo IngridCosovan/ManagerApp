@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-md-10">
+        <app-people-edit></app-people-edit>
+        <hr>
+       <ul class="list-group">
+           <a href="#"
+           [appCustomBackground] = "'aqua'"
+           [defaultColor] = "'lightgrey'"
+           class="list-group-item"
+           style="cursor: pointer;"
+           *ngFor="let person of people">
+           {{person.name}} {{person.email}}</a>
+       </ul>
+
+       <!-- <div *ngIf ="condition">TEXT EXEMPLU 1</div>
+<ng-template [ngIf]="condition">
+       <div>TEXT EXEMPLU 2</div>
+</ng-template>
+<div *appIfNot = "condition">TEXT EXEMPLU 3</div> -->
+
+<div [ngSwitch]="value">
+<p *ngSwitchCase="5">Valoarea este 5</p>
+<p *ngSwitchCase="10">Valoarea este 10</p>
+<p *ngSwitchCase="20">Valoarea este 20</p>
+<p *ngSwitchCase="50">Valoarea este 50</p>
+<p *ngSwitchCaseDefault>Cazul implicit</p>
+</div>
+
+
+    </div>
+</div>

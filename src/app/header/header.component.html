@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="margin-bottom: 10px;">
+    <div class="container-fluid">
+<a class="navbar-brand" href="#">Manager App</a>
+
+<div class="collapse navbar-collapse">
+<ul class="navbar-nav me-auto">
+    <li class="nav-item"> <a routerLink="/projects" class="nav-link" routerLinkActive="active">Project</a></li>
+    <li class="nav-item"> <a [routerLink]="['/people']" class="nav-link" routerLinkActive="active">People list</a></li>
+</ul>
+<ul class="navbar-nav">
+  <!-- <li class="nav-item">
+    <a class="nav-link" style="cursor: pointer;">Login</a>
+  </li> -->
+<li class="nav-item dropdown" appDropdown>
+    <a class="nav-link dropdown-toggle" role="buttom" style="cursor: pointer;" (click)="doLogin">Data</a>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" style="cursor: pointer;">Save</a></li>
+        <li><a class="dropdown-item" style="cursor: pointer;">Get</a></li>
+    </ul>
+</li>
+</ul>
+</div>
+</div>
+</nav>

@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-xs-12">
+        <form>
+            <div class="row">
+            <div class="col-sm-7 form-floating">
+                <input type="text" class="form-control" id="name" placeholder="name" #nameInput>
+                <label for="name">Name</label>
+            </div>
+            <div class="col-sm-5 form-floating">
+                <input type="text" class="form-control" id="email" placeholder="email" #emailInput>
+                <label for="email">Email</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12" style="margin-top: 5px;">
+                <button type="button" class="btn btn-success" style="margin-right: 5px;" (click)="addNewPerson()">Add</button>
+                <button type="button" class="btn btn-danger" style="margin-right: 5px;">Delete</button>
+                <button type="button" class="btn btn-primary" style="margin-right: 5px;">Reset</button>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
