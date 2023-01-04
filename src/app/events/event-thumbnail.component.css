@@ -1,0 +1,19 @@
+.eventTime {
+  color: green !important;
+  font-weight: bold;
+}
+
+.pad-left {
+  margin-left: 10px;
+}
+
+.well div {
+  color: #bbb;
+}
+
+.thumbnail {
+  background-color: grey;
+  margin: 2rem;
+  min-height: 15rem;
+  padding: 0.5rem 0 0 1rem;
+}

@@ -1,0 +1,45 @@
+<div class="container">
+  <h1>Login</h1>
+<hr>
+<div class="col-md-4">
+  <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)" autocomplete="off" novalidate>
+<!--    accesam datele introduse, pass si userName adaugand o variabila locala pe elementul form
+si vom folosi acea variabila loginForm in submit handler -->
+    <div class="form-group" >
+      <label for="userName">User Name:</label>
+      <span class="required" *ngIf="loginForm.controls.userName?.invalid && (loginForm.controls.userName?.touched || mouseoverLogin)">Required</span>
+      <input required [ngModel]="userName" name="userName" id="userName" type="text" class="form-control" placeholder="User Name..."/>
+    </div>
+    <div class="form-group password" >
+      <label for="password">Password:</label>
+      <span class="required" *ngIf="loginForm.controls.password?.invalid && (loginForm.controls.password?.touched || mouseoverLogin)">Required</span>
+      <input required [ngModel]="password" name="password" id="password" type="password" class="form-control" placeholder="Password..." />
+    </div>
+<div class="buttons">
+  <span (mouseenter)="mouseoverLogin=true" (mouseleave)="mouseoverLogin=false">
+    <button [disabled]="loginForm.invalid" type="submit" class="btn btn-primary">Login</button>
+    </span>
+    <button (click)="cancel()" type="button" class="btn btn-default">Cancel</button>
+</div>
+  </form>
+</div>
+</div>
+
+
+<!--<div>-->
+<!--  <p>Salut</p>-->
+<!--  {{loginForm.controls?.userName?.invalid}}-->
+<!--  {{loginForm.controls['userName'].invalid}}-->
+<!--</div>-->
+<!--TEMPLATE BASED FORM-->
+<!--pentru a trimite valori la inputuri am putea foloisi data binding (input)="userName=$event.target.value", dar
+daca am avea 100 de inputuri ar fi greu de aceea ne folosim de ngModel, care ne da niste functionalitati
+aditionale specifice formularelor.-->
+<!--Valorile pentru username si pasword nu le vom lua din ts ci ne vom folosi sa accesam aceste date din formularul
+submitted <form>, facem asta adaugand o variabila locala la elementul form, #loginForm="ngForm",
+si ne vom folosi de variabila loginForm in handlerul submit.
+Legat de asta am fi putut face (submit)="login(loginForm)", si ar fi mes, cand am fi dat submit la form
+ , metoda login din componenta ar fi fost chemata si ar fi pasat loginForm-ul. Insa am folosit ngSubmit
+ care este o directiva a Angular, deoarece aia ajuta sa previna ca formularul sa fie submit la server spre exemplu.
+ -->
+<!--<span *ngIf="loginForm.controls['password'].invalid">Required</span>-->

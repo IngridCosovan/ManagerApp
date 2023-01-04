@@ -1,47 +1,58 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { ProjectsComponent } from './projects/projects.component';
-import { ProjectListComponent } from './projects/project-list/project-list.component';
-import { ProjectItemComponent } from './projects/project-list/project-item/project-item.component';
-import { ProjectDetailComponent } from './projects/project-detail/project-detail.component';
-import { PeopleListComponent } from './people-list/people-list.component';
-import { PeopleEditComponent } from './people-list/people-edit/people-edit.component';
-import { CustomBackgroundDirective } from './directives/custom-background.directive';
-import { IfNotDirective } from './directives/if-not.directive';
-import { DropdownDirective } from './directives/dropdown.directive';
-import { ProjectsDefaultComponent } from './projects/projects-default/projects-default.component';
-import { ProjectEditComponent } from './projects/project-edit/project-edit.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-
-
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {RouterModule} from '@angular/router';
+import {appRoutes} from '../routes';
+import {AppComponent} from './app.component';
+import {
+  EventsListComponent,
+  EventThumbnailComponent,
+  EventService,
+  EventDetailsComponent,
+  CreateEventComponent,
+  EventRouteActivator,
+  EventsListsResolver,
+  CreateSessionComponent, SessionListComponent, DurationPipe
+} from './events';
+import {NavbarComponent} from './nav/navbar.component';
+import {Error404Component} from './error/404.component';
+import {AuthService} from './user/auth.service';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {CollapsibleWellComponent} from "./common/collapsible-well.component";
+import {CustomBackgroundDirective} from "./directive/custom-background.directive";
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    ProjectsComponent,
-    ProjectListComponent,
-    ProjectItemComponent,
-    ProjectDetailComponent,
-    PeopleListComponent,
-    PeopleEditComponent,
-    CustomBackgroundDirective,
-    IfNotDirective,
-    DropdownDirective,
-    ProjectsDefaultComponent,
-    ProjectEditComponent,
-    NotFoundComponent
+    EventsListComponent,
+    EventThumbnailComponent,
+    NavbarComponent,
+    EventDetailsComponent,
+    CreateEventComponent,
+    Error404Component,
+    CreateSessionComponent,
+    SessionListComponent,
+    CollapsibleWellComponent,
+    DurationPipe,
+    CustomBackgroundDirective
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-
+    RouterModule.forRoot(appRoutes),
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [EventService,
+    EventRouteActivator,
+    EventsListsResolver,
+    AuthService,
+    {provide: 'canDeactivateCreateEvent', useValue: checkDirtyState}],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
+
+export function checkDirtyState(component: CreateEventComponent): boolean {
+  if (component.isDirty)
+    return window.confirm('You have not saved this event, do you really want to cancel it?')
+  return true;
+}

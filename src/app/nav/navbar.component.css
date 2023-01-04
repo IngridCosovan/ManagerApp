@@ -1,0 +1,31 @@
+.form-inline{
+  display: flex;
+  margin-left: 15rem;
+}
+
+.nav-item {
+  width: 12rem;
+}
+
+.nav-link {
+  width: 12rem;
+}
+
+.navbar-brand {
+  margin-left: 1rem;
+  margin-right: 3rem;
+}
+
+a.active {
+  color: #f97924 !important;
+}
+
+.user {
+  margin-left: 3rem;
+  width: 8rem;
+}
+
+#searchForm{
+  display: flex;
+  width: 15rem;
+}

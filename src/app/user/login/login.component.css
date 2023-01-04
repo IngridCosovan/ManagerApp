@@ -1,0 +1,22 @@
+.required {
+  float: right;
+  color: #e05c65;
+  padding-left: 10px;
+}
+
+.container {
+  margin-left: 3rem;
+}
+
+.password {
+  margin-top: 1rem;
+}
+
+.buttons {
+  margin-top: 1rem;
+}
+
+.btn-primary {
+  margin-right: 1rem;
+}
+
